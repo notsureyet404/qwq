@@ -1,69 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electronic Music Collaboration Survey</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-            },
-            colors: {
-              neon: {
-                blue: '#00f3ff',
-                pink: '#ff00ff',
-                purple: '#bd00ff',
-                dark: '#0a0a0f',
-                surface: '#13131f'
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        background-color: #0a0a0f;
-        color: #e2e8f0;
-      }
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #13131f; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #334155; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #475569; 
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.557.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-  <body>
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
-</html>
+import React, { useState, useEffect } from 'react';
+import Sidebar from './components/Sidebar';
+import SurveyForm from './components/SurveyForm';
+import Thanks from './components/Thanks';
+import { DEMO_TRACKS } from './constants';
+
+const App: React.FC = () => {
+  const [route, setRoute] = useState(window.location.hash || '#/');
+
+  useEffect(() => {
+    // GitHub Pages Deployment Fix:
+    // If the user lands on ".../qwq/" without a hash, force it to ".../qwq/#/"
+    // This prevents relative path issues and ensures consistent routing state.
+    if (!window.location.hash) {
+        window.location.hash = '#/';
+    }
+
+    const handleHashChange = () => {
+      setRoute(window.location.hash || '#/');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  return (
+    <div className="flex flex-col md:flex-row min-h-screen bg-neon-dark text-slate-200 font-sans selection:bg-neon-pink selection:text-white">
+      {/* 
+        Sidebar is kept outside the route switching logic for visual persistence,
+        though on mobile it stacks on top. 
+      */}
+      <Sidebar tracks={DEMO_TRACKS} />
+
+      <main className="flex-1 relative overflow-x-hidden">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(19,19,31,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(19,19,31,0.8)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
+
+        {route === '#/thanks' ? (
+          <Thanks />
+        ) : (
+          <SurveyForm />
+        )}
+      </main>
+    </div>
+  );
+};
+
+export default App;
