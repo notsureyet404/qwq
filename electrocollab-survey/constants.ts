@@ -4,30 +4,30 @@ import { Track, Instrument, CollaborationStatus } from './types';
 export const DEMO_TRACKS: Track[] = [
   {
     id: 'track-1',
-    title: 'Neon Horizon',
-    artist: 'SynthWave Core',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    title: 'pre-dawn(chinese)',
+    artist: 'post rock',
+    url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/4.mp3',
     duration: '03:12'
   },
   {
     id: 'track-2',
-    title: 'Cyber Pulse',
-    artist: 'Electro Vibe',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+    title: 'Dysfunctional Obsession(english)',
+    artist: 'idk maybe rock',
+    url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/Dysfunctional%20Obsession.mp3',
     duration: '04:05'
   },
   {
     id: 'track-3',
-    title: 'Deep Logic',
-    artist: 'Bass Heavy',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    title: '无需困苦！Don't You Worry(chinese)',
+    artist: 'jrock?',
+    url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/%E6%97%A0%E9%9C%80%E5%9B%B0%E8%8B%A6!%EF%BC%8812.5.mp3',
     duration: '02:45'
   },
   {
     id: 'track-4',
     title: 'Void Echo',
-    artist: 'Dark Matter',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
+    artist: 'edm',
+    url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/guitar(Silent%20Stars%20Above%20Desert(10.25%20demo)).mp3',
     duration: '03:50'
   }
 ];
