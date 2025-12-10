@@ -8,6 +8,13 @@ const App: React.FC = () => {
   const [route, setRoute] = useState(window.location.hash || '#/');
 
   useEffect(() => {
+    // GitHub Pages Deployment Fix:
+    // If the user lands on ".../qwq/" without a hash, force it to ".../qwq/#/"
+    // This prevents relative path issues and ensures consistent routing state.
+    if (!window.location.hash) {
+        window.location.hash = '#/';
+    }
+
     const handleHashChange = () => {
       setRoute(window.location.hash || '#/');
     };
