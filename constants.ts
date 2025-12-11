@@ -18,7 +18,7 @@ export const DEMO_TRACKS: Track[] = [
   },
   {
     id: 'track-3',
-    title: '无需困苦！Don't You Worry(chinese)',
+    title: '无需困苦！Dont You Worry(chinese)',
     artist: 'jrock?',
     url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/%E6%97%A0%E9%9C%80%E5%9B%B0%E8%8B%A6!%EF%BC%8812.5.mp3',
     duration: '02:45'
