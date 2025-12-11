@@ -9,7 +9,7 @@ const Thanks: React.FC = () => {
       </div>
       <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Transmission Received</h1>
       <p className="text-xl text-slate-400 max-w-lg mb-8">
-        Your data has been successfully sent to me. I will review your frequency and contact you via Telegram if resonance is detected.
+        Received! Thanks for filling this out. If you don't hear from me in 4 days, just pm me on Telegram.
       </p>
       
       <a 
