@@ -17,7 +17,7 @@ const Thanks: React.FC = () => {
         className="inline-flex items-center text-neon-blue hover:text-white transition-colors"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
-        Return to Frequency
+        Return to The Survey
       </a>
     </div>
   );
