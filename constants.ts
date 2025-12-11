@@ -6,28 +6,28 @@ export const DEMO_TRACKS: Track[] = [
     id: 'track-1',
     title: 'pre-dawn(chinese)',
     artist: 'post rock',
-    url: 'https://raw.githubusercontent.com/notsureyet404/qwq/blob/main/electrocollab-survey/4.mp3',
+    url: 'https://github.com/notsureyet404/qwq/raw/refs/heads/main/electrocollab-survey/4.mp3',
     duration: '03:12'
   },
   {
     id: 'track-2',
     title: 'Dysfunctional Obsession(english)',
     artist: 'idk maybe rock',
-    url: 'https://raw.githubusercontent.com/notsureyet404/qwq/blob/main/electrocollab-survey/Dysfunctional%20Obsession.mp3',
+    url: 'https://github.com/notsureyet404/qwq/raw/refs/heads/main/electrocollab-survey/Dysfunctional%20Obsession.mp3',
     duration: '04:05'
   },
   {
     id: 'track-3',
     title: '无需困苦！Dont You Worry(chinese)',
     artist: 'jrock?',
-    url: 'https://raw.githubusercontent.com/notsureyet404/qwq/blob/main/electrocollab-survey/%E6%97%A0%E9%9C%80%E5%9B%B0%E8%8B%A6!%EF%BC%8812.5.mp3',
+    url: 'https://github.com/notsureyet404/qwq/raw/refs/heads/main/electrocollab-survey/%E6%97%A0%E9%9C%80%E5%9B%B0%E8%8B%A6!%EF%BC%8812.5.mp3',
     duration: '02:45'
   },
   {
     id: 'track-4',
     title: 'Silent Stars Above Desert',
     artist: 'edm',
-    url: 'https://raw.githubusercontent.com/notsureyet404/qwq/blob/main/electrocollab-survey/3.mp3',
+    url: 'https://github.com/notsureyet404/qwq/raw/refs/heads/main/electrocollab-survey/3.mp3',
     duration: '03:50'
   }
 ];
