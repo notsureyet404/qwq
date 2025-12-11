@@ -19,7 +19,6 @@ const SurveyForm: React.FC = () => {
   const [nextUrl, setNextUrl] = useState('');
 
   useEffect(() => {
-    // Set the return URL to the current page + #/thanks
     const baseUrl = window.location.href.split('#')[0];
     setNextUrl(`${baseUrl}#/thanks`);
   }, []);
@@ -37,9 +36,12 @@ const SurveyForm: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto p-6 md:p-12 pb-24">
       <div className="mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Collaboration Inquiry for Shu(@qwq404)</h2>
+        {/* Title: 更轻松的标题 */}
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Music Collab with Shu (@qwq404)</h2>
         <p className="text-slate-400">
-            Please listen to the tracks in the sidebar and tell me your intension :)        </p>
+            {/* Intro: 更口语化的引导 */}
+            Check out the tracks in the sidebar and let me know what you think! :)
+        </p>
       </div>
 
       <form 
@@ -47,16 +49,31 @@ const SurveyForm: React.FC = () => {
         method="POST"
         className="space-y-12"
       >
-        {/* Hidden Configuration Fields for FormSubmit */}
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_subject" value="New Music Collaboration Response!" />
         <input type="hidden" name="_next" value={nextUrl} />
 
-        {/* Question 1: Intent */}
+        {/* --- MOVED: Telegram is now Question 01 --- */}
+        <section className="space-y-2">
+          <label className="block text-neon-blue font-mono text-lg">
+            01. First off, what's your Telegram? <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="telegram_handle"
+            value={telegram}
+            onChange={(e) => setTelegram(e.target.value)}
+            placeholder="@username"
+            required
+            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-4 text-white focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-all"
+          />
+        </section>
+
+        {/* --- Intent is now Question 02 --- */}
         <section className="space-y-4">
           <label className="block text-neon-blue font-mono text-lg mb-2">
-            01. Based on the sidebar tracks, what is your plan for this collaboration? <span className="text-red-500">*</span>
+            02. So, what's the plan? <span className="text-red-500">*</span>
           </label>
           <div className="grid gap-4">
             {COLLAB_OPTIONS.map((option) => (
@@ -91,13 +108,13 @@ const SurveyForm: React.FC = () => {
         {isRejecting && (
             <div className="bg-slate-800/50 border border-slate-700 p-6 rounded-lg text-center animate-fade-in">
                 <AlertTriangle className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-xl text-white font-bold mb-2">I understand.</h3>
-                <p className="text-slate-400 mb-6">"Life happens. See you next time."</p>
+                <h3 className="text-xl text-white font-bold mb-2">No worries!</h3>
+                <p className="text-slate-400 mb-6">"Life happens. Catch you next time."</p>
                 <button 
                     type="submit" 
                     className="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-full transition-all"
                 >
-                    Send Farewell Message
+                    Send (Let me know you saw this)
                 </button>
             </div>
         )}
@@ -106,30 +123,14 @@ const SurveyForm: React.FC = () => {
         {isWilling && (
           <div className="space-y-12 animate-fade-in-up">
             
-            {/* Telegram */}
-            <section className="space-y-2">
-              <label className="block text-neon-blue font-mono text-lg">
-                02. Telegram Username <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="telegram_handle"
-                value={telegram}
-                onChange={(e) => setTelegram(e.target.value)}
-                placeholder="@username"
-                required
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg p-4 text-white focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue transition-all"
-              />
-            </section>
-
-            {/* Track Ratings */}
+            {/* Track Ratings (Renumbered to 03) */}
             <section className="space-y-6">
               <label className="block text-neon-blue font-mono text-lg">
-                03. Rate the tracks (Interest Level) <span className="text-red-500">*</span>
+                03. Vibe Check: How do you like these demos? <span className="text-red-500">*</span>
               </label>
               <div className="flex items-center gap-2 text-sm text-yellow-500 bg-yellow-500/10 p-3 rounded border border-yellow-500/20">
                  <AlertCircle size={16} />
-                 <span>1 = Absolute No, 10 = Love it. (Complete Neutrality is not allowed!</span>
+                 <span>1 = Nah, 10 = Love it. (Don't sit on the fence!)</span>
               </div>
               
               <div className="grid gap-6">
@@ -163,14 +164,15 @@ const SurveyForm: React.FC = () => {
               </div>
             </section>
 
-             {/* New Composition? */}
+             {/* New Composition (Renumbered to 04) */}
              <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                04. Do you need a new track (Re-composition)? <span className="text-red-500">*</span>
+                04. Prefer a fresh track? (Maybe we start from scratch together?) <span className="text-red-500">*</span>
               </label>
-              <p className="text-sm text-slate-400 -mt-2">Iet me know if existing tracks don't match your vibe</p>
+              {/* 修正了 typo: Iet -> Let */}
+              <p className="text-sm text-slate-400 -mt-2">Let me know if the existing ones don't match your vibe.</p>
               <div className="flex gap-6">
-                {['Yes, I need something fresh.', 'No, existing styles are fine.'].map(opt => (
+                {['Yes, I need something fresh.', 'No, existing styles are cool.'].map(opt => (
                     <label key={opt} className="flex items-center gap-2 cursor-pointer">
                         <input 
                             type="radio" 
@@ -186,10 +188,10 @@ const SurveyForm: React.FC = () => {
               </div>
             </section>
 
-            {/* Instrument Role */}
+            {/* Instrument Role (Renumbered to 05) */}
             <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                05. Which part do you want to be responsible for? <span className="text-red-500">*</span>
+                05. What instrument do you want to play? <span className="text-red-500">*</span>
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {INSTRUMENTS.map((inst) => (
@@ -210,12 +212,12 @@ const SurveyForm: React.FC = () => {
               </div>
             </section>
 
-            {/* General Willingness */}
+            {/* General Willingness (Renumbered to 06) */}
             <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                06. Willingness to collaborate with other instruments? <span className="text-red-500">*</span>
+                06. Down to jam with other instruments? <span className="text-red-500">*</span>
               </label>
-              <p className="text-sm text-slate-400 -mt-2">1 = Absolute No, 10 = Sure!</p>
+              <p className="text-sm text-slate-400 -mt-2">1 = Nope, 10 = Sure!</p>
               <div className="flex flex-wrap gap-2">
                 {RATING_SCALE.map(num => (
                     <label key={num} className="cursor-pointer">
@@ -235,10 +237,10 @@ const SurveyForm: React.FC = () => {
               </div>
             </section>
 
-            {/* Cover Art */}
+            {/* Cover Art (Renumbered to 07) */}
             <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                07. Would you like to provide Cover Art? <span className="text-red-500">*</span>
+                07. Wanna handle the Cover Art? <span className="text-red-500">*</span>
               </label>
               <div className="flex gap-6">
                 {['Yes', 'No'].map(opt => (
@@ -257,36 +259,7 @@ const SurveyForm: React.FC = () => {
               </div>
             </section>
 
-             {/* Extra Notes */}
+             {/* Extra Notes (Renumbered to 08) */}
              <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                08. Additional Notes / Special requirements
-              </label>
-              <textarea
-                name="additional_notes"
-                rows={4}
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg p-4 text-white focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all"
-                placeholder="eg. I want to be responsible for more instruments"
-              />
-            </section>
-
-            {/* Submit Button */}
-            <div className="pt-8 border-t border-slate-800">
-                <button 
-                    type="submit" 
-                    className="w-full group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg hover:from-cyan-400 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neon-blue focus:ring-offset-slate-900"
-                >
-                    <span className="mr-2">TRANSMIT DATA</span>
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-            </div>
-          </div>
-        )}
-      </form>
-    </div>
-  );
-};
-
-export default SurveyForm;
+                08
