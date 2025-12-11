@@ -25,7 +25,7 @@ export const DEMO_TRACKS: Track[] = [
   },
   {
     id: 'track-4',
-    title: 'Void Echo',
+    title: 'Silent Stars Above Desert',
     artist: 'edm',
     url: 'https://github.com/notsureyet404/qwq/blob/main/electrocollab-survey/guitar(Silent%20Stars%20Above%20Desert(10.25%20demo)).mp3',
     duration: '03:50'
