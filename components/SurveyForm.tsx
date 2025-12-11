@@ -136,7 +136,7 @@ const SurveyForm: React.FC = () => {
               <div className="grid gap-6">
                 {DEMO_TRACKS.map((track) => (
                     <div key={track.id} className="bg-slate-900/50 p-6 rounded-lg border border-slate-800">
-                        <h4 className="font-bold text-white mb-4">{track.title} <span className="text-slate-500 font-normal">by {track.artist}</span></h4>
+                        <h4 className="font-bold text-white mb-4">{track.title} <span className="text-slate-500 font-normal"> {track.artist}</span></h4>
                         
                         <div className="space-y-4">
                             <div>
@@ -262,7 +262,7 @@ const SurveyForm: React.FC = () => {
              {/* Extra Notes (Renumbered to 08) */}
              <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                08. Anything else?
+                08. Anything else?/Any question?
               </label>
               <textarea
                 name="additional_notes"
@@ -270,7 +270,7 @@ const SurveyForm: React.FC = () => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg p-4 text-white focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all"
-                placeholder="eg. I want to play multiple instruments...."
+                placeholder="eg. I want to play multiple instruments/These lyrics are so cringe/Can I compose my own part or remix? (Sure!)"
               />
             </section>
 
