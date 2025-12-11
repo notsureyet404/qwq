@@ -48,9 +48,9 @@ const Sidebar: React.FC<SidebarProps> = ({ tracks }) => {
         <div>
             <h1 className="text-lg md:text-xl font-bold font-mono text-neon-blue flex items-center gap-2">
             <Music2 className="w-5 h-5 md:w-6 md:h-6" />
-            ELECTRO_LAB
+            EML×JMC
             </h1>
-            <p className="text-[10px] md:text-xs text-slate-400 mt-1 md:mt-2">Sonic Exploration Unit</p>
+            <p className="text-[10px] md:text-xs text-slate-400 mt-1 md:mt-2">ddl is 31st January 2026</p>
         </div>
         
         {/* Mobile Volume Control (moved here to save space) */}
@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({ tracks }) => {
 
       <div className="flex-1 overflow-y-auto p-2 md:p-4 md:space-y-4">
         <div className="hidden md:block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-          Featured Tracks
+          demos
         </div>
         
         {/* Grid for mobile (2 columns), Stack for desktop */}
