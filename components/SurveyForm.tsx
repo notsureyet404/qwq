@@ -262,4 +262,33 @@ const SurveyForm: React.FC = () => {
              {/* Extra Notes (Renumbered to 08) */}
              <section className="space-y-4">
               <label className="block text-neon-blue font-mono text-lg">
-                08
+                08. Anything else?
+              </label>
+              <textarea
+                name="additional_notes"
+                rows={4}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                className="w-full bg-slate-900 border border-slate-700 rounded-lg p-4 text-white focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all"
+                placeholder="eg. I want to play multiple instruments...."
+              />
+            </section>
+
+            {/* Submit Button */}
+            <div className="pt-8 border-t border-slate-800">
+                <button 
+                    type="submit" 
+                    className="w-full group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg hover:from-cyan-400 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neon-blue focus:ring-offset-slate-900"
+                >
+                    <span className="mr-2">SEND IT</span>
+                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+            </div>
+          </div>
+        )}
+      </form>
+    </div>
+  );
+};
+
+export default SurveyForm;
