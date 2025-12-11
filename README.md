@@ -1,1 +1,1 @@
-omg
+Google Al Studio is sick
